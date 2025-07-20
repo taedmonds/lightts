@@ -1,0 +1,54 @@
+{
+    "name": "lightts",
+    "version": "1.0.0",
+    "description": "A lightweight, native Node.js framework with typescript, designed to keep things simple, transparent, and customizable",
+    "keywords": [
+        "express",
+        "framework",
+        "typeScript",
+        "decorators",
+        "router",
+        "controllers",
+        "services",
+        "middlewares",
+        "models",
+        "validation"
+    ],
+    "bin": {
+        "lightts": "dist/index.js",
+        "lts": "dist/index.js"
+    },
+    "license": "MIT",
+    "author": "terance-edmonds",
+    "repository": {
+        "url": "https://github.com/terance-edmonds/lightts.git"
+    },
+    "type": "commonjs",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "rimraf dist && tsup --publicDir",
+        "link:lts": "pnpm link --global",
+        "unlink:lts": "pnpm remove lightts -g",
+        "reload": "pnpm build && pnpm unlink:lts && pnpm link:lts",
+        "reload:clean": "pnpm reload && rm -rf test/*"
+    },
+    "devDependencies": {
+        "@types/node": "^24.0.1",
+        "rimraf": "^6.0.1",
+        "tsup": "^8.5.0",
+        "typescript": "^5.8.3"
+    },
+    "dependencies": {
+        "@inquirer/prompts": "^7.5.3",
+        "change-case": "^5.4.4",
+        "commander": "^14.0.0",
+        "ora": "^8.2.0",
+        "ts-morph": "^26.0.0"
+    },
+    "files": [
+        "dist",
+        "ReadMe.md"
+    ]
+}
