@@ -7,7 +7,7 @@ export const initGitRepo = () => {
     try {
         execSync('git init', { stdio: 'ignore' });
 
-        copyTemplateFile({ filename: '.gitignore' });
+        copyTemplateFile({ filename: 'dot-gitignore', destination: '.gitignore' });
 
         spinner.succeed('Git initialized');
     } catch (error) {

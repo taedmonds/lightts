@@ -1,6 +1,6 @@
 {
     "name": "lightts",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A lightweight, native Node.js framework with typescript, designed to keep things simple, transparent, and customizable",
     "keywords": [
         "express",
