@@ -9,7 +9,7 @@ import { addDatabaseDummyTemplate } from '../../init/templates/features/database
 import { addDatabaseDataSourceTemplate } from '../../init/templates/features/database/root';
 import { addDatabaseSeedersTemplate } from '../../init/templates/features/database/seeders';
 import { getImportPath } from '../../utils';
-import { updateLiteTsConfigDatabase, updateLiteTsConfigFeatures } from '../../utils/lightts';
+import { updateLightTsConfigDatabase, updateLightTsConfigFeatures } from '../../utils/lightts';
 import { updateConfigFile } from '../../utils/patch/config';
 import { updateEnvFile } from '../../utils/patch/env';
 import { fileExists } from '../../utils/project';
@@ -185,8 +185,8 @@ export const addDatabaseFeature = async (project: Project, data: AddCommandProps
         execSync(`${pkgCmd.install} ${devDependencies.join(' ')}`, { stdio: 'ignore' });
 
     spinner.text = 'Updating lightts config';
-    updateLiteTsConfigFeatures(['database']);
-    updateLiteTsConfigDatabase(dbConfigs);
+    updateLightTsConfigFeatures(['database']);
+    updateLightTsConfigDatabase(dbConfigs);
 
     spinner.succeed('Feature is now onboard');
 };

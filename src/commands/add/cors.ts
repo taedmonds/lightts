@@ -4,7 +4,7 @@ import { Project, SourceFile, SyntaxKind } from 'ts-morph';
 import { pkgManagerCommands } from '../../config';
 import { addCorsTemplate } from '../../init/templates/features/cors';
 import { getImportPath } from '../../utils';
-import { updateLiteTsConfigFeatures } from '../../utils/lightts';
+import { updateLightTsConfigFeatures } from '../../utils/lightts';
 import { fileExists } from '../../utils/project';
 
 export const addCorsFeature = (project: Project, data: AddCommandProps) => {
@@ -91,7 +91,7 @@ export const addCorsFeature = (project: Project, data: AddCommandProps) => {
 
     // add feature to lightts config
     spinner.text = 'Update lightts config';
-    updateLiteTsConfigFeatures(['cors']);
+    updateLightTsConfigFeatures(['cors']);
 
     spinner.succeed('Feature is now onboard');
 };

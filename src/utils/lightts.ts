@@ -1,12 +1,12 @@
 import fs from 'fs';
 import ora from 'ora';
 import path from 'path';
-import { DEFAULT_LITETS_CONFIG, LITETS_DIR } from '../config';
+import { DEFAULT_LIGHTTS_CONFIG, LIGHTTS_DIR } from '../config';
 
-export const getLiteTsConfig = (): LiteTsConfig => {
-    const configPath = path.resolve(process.cwd(), LITETS_DIR, 'config.json');
+export const getLightTsConfig = (): LightTsConfig => {
+    const configPath = path.resolve(process.cwd(), LIGHTTS_DIR, 'config.json');
     const spinner = ora('Loading lightTs config...').start();
-    let configFromFile: Partial<LiteTsConfig> = {};
+    let configFromFile: Partial<LightTsConfig> = {};
 
     try {
         if (fs.existsSync(configPath)) {
@@ -14,21 +14,21 @@ export const getLiteTsConfig = (): LiteTsConfig => {
             configFromFile = JSON.parse(raw);
             spinner.succeed('Loaded config from LightTs config');
         } else {
-            spinner.warn(`${LITETS_DIR}/config.json not found. Using default config.`);
+            spinner.warn(`${LIGHTTS_DIR}/config.json not found. Using default config.`);
         }
     } catch (err) {
         spinner.fail('Failed to parse LightTs config');
     }
 
     return {
-        ...DEFAULT_LITETS_CONFIG,
+        ...DEFAULT_LIGHTTS_CONFIG,
         ...configFromFile
     };
 };
 
-export const updateLiteTsConfigFeatures = (features: Features[]) => {
-    const configPath = path.resolve(process.cwd(), LITETS_DIR, 'config.json');
-    let configFromFile: Partial<LiteTsConfig> = {};
+export const updateLightTsConfigFeatures = (features: Features[]) => {
+    const configPath = path.resolve(process.cwd(), LIGHTTS_DIR, 'config.json');
+    let configFromFile: Partial<LightTsConfig> = {};
 
     if (fs.existsSync(configPath)) {
         const raw = fs.readFileSync(configPath, 'utf-8');
@@ -39,7 +39,7 @@ export const updateLiteTsConfigFeatures = (features: Features[]) => {
 
     const config = JSON.stringify(
         {
-            ...DEFAULT_LITETS_CONFIG,
+            ...DEFAULT_LIGHTTS_CONFIG,
             ...configFromFile
         },
         null,
@@ -48,9 +48,9 @@ export const updateLiteTsConfigFeatures = (features: Features[]) => {
     fs.writeFileSync(configPath, config);
 };
 
-export const updateLiteTsConfigDatabase = (dbConfigs: DBConfigs) => {
-    const configPath = path.resolve(process.cwd(), LITETS_DIR, 'config.json');
-    let configFromFile: Partial<LiteTsConfig> = {};
+export const updateLightTsConfigDatabase = (dbConfigs: DBConfigs) => {
+    const configPath = path.resolve(process.cwd(), LIGHTTS_DIR, 'config.json');
+    let configFromFile: Partial<LightTsConfig> = {};
 
     if (fs.existsSync(configPath)) {
         const raw = fs.readFileSync(configPath, 'utf-8');
@@ -61,7 +61,7 @@ export const updateLiteTsConfigDatabase = (dbConfigs: DBConfigs) => {
 
     const config = JSON.stringify(
         {
-            ...DEFAULT_LITETS_CONFIG,
+            ...DEFAULT_LIGHTTS_CONFIG,
             ...configFromFile
         },
         null,

@@ -6,5 +6,5 @@ interface GenerateCommandArguments {
 }
 
 interface GenerateCommandProps extends GenerateCommandArguments {
-    lightts: LiteTsConfig;
+    lightts: LightTsConfig;
 }

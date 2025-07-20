@@ -1,5 +1,5 @@
 import { Project } from 'ts-morph';
-import { getLiteTsConfig } from '../../utils/lightts';
+import { getLightTsConfig } from '../../utils/lightts';
 import { formatAndSaveProject } from '../../utils/project';
 import { addCorsFeature } from './cors';
 import { addDatabaseFeature } from './database';
@@ -9,9 +9,9 @@ import { addValidationFeature } from './validation';
 export const addCommand = async (args: AddCommandArguments) => {
     const project = new Project();
     // load lightts config from local project
-    const liteTsConfig = getLiteTsConfig();
+    const lightTsConfig = getLightTsConfig();
 
-    const data: AddCommandProps = { ...args, lightts: liteTsConfig };
+    const data: AddCommandProps = { ...args, lightts: lightTsConfig };
     switch (data.feature) {
         case 'cors':
             addCorsFeature(project, data);

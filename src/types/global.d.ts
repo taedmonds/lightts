@@ -15,7 +15,7 @@ interface PackageJSON {
     'lint-staged'?: Record<string, string[]>;
 }
 
-interface LiteTsConfig {
+interface LightTsConfig {
     name: string;
     fileStyle: FileStyle;
     package: PKGTypes;

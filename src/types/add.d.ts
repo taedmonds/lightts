@@ -3,5 +3,5 @@ interface AddCommandArguments {
 }
 
 interface AddCommandProps extends AddCommandArguments {
-    lightts: LiteTsConfig;
+    lightts: LightTsConfig;
 }

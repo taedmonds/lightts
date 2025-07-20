@@ -1,6 +1,6 @@
 // constants
 export const ROOT_DIR = 'src';
-export const LITETS_DIR = '.lightts';
+export const LIGHTTS_DIR = '.lightts';
 
 export const CORE_DIR = `${ROOT_DIR}/core`;
 export const MODULES_DIR = `${ROOT_DIR}/modules`;
@@ -8,7 +8,7 @@ export const MIDDLEWARE_DIR = `${ROOT_DIR}/middleware`;
 export const DATABASE_DIR = `${ROOT_DIR}/database`;
 export const TYPES_DIR = `${ROOT_DIR}/types`;
 
-export const DEFAULT_LITETS_CONFIG: LiteTsConfig = {
+export const DEFAULT_LIGHTTS_CONFIG: LightTsConfig = {
     name: 'epic-api',
     fileStyle: 'angular',
     package: 'npm',
@@ -22,11 +22,12 @@ export const DEFAULT_LITETS_CONFIG: LiteTsConfig = {
 };
 
 export const ASCII_LOGO = `
-    __    _ __     ______
-   / /   (_) /____/_  __/____
-  / /   / / __/ _ \/ / / ___/
- / /___/ / /_/  __/ / (__  )
-/_____/_/\__/\___/_/ /____/
+    __    _       __    __ ______    
+   / /   (_)___ _/ /_  / //_  __/____
+  / /   / / __  / __ \/ __// / / ___/
+ / /___/ / /_/ / / / / /_ / / (__  ) 
+/_____/_/\__, /_/ /_/\__//_/ /____/  
+        /____/                       
 `;
 
 export const pkgManagerCommands = {

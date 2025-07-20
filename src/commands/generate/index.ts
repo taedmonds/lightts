@@ -1,5 +1,5 @@
 import { Project } from 'ts-morph';
-import { getLiteTsConfig } from '../../utils/lightts';
+import { getLightTsConfig } from '../../utils/lightts';
 import { formatAndSaveProject } from '../../utils/project';
 import { generateController } from './controller';
 import { generateResource } from './resource';
@@ -9,9 +9,9 @@ import { generateService } from './service';
 export const generateCommand = async (args: GenerateCommandArguments) => {
     const project = new Project();
     // load lightts config from local project
-    const liteTsConfig = getLiteTsConfig();
+    const lightTsConfig = getLightTsConfig();
 
-    const data: GenerateCommandProps = { ...args, lightts: liteTsConfig };
+    const data: GenerateCommandProps = { ...args, lightts: lightTsConfig };
 
     switch (data.type) {
         case 'c':

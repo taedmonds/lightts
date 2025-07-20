@@ -6,7 +6,7 @@ import { Project } from 'ts-morph';
 import { pkgManagerCommands, TYPES_DIR } from '../../config';
 import { addJWTTemplate } from '../../init/templates/features/jwt';
 import { copyTemplateFile, getFileName } from '../../utils';
-import { updateLiteTsConfigFeatures } from '../../utils/lightts';
+import { updateLightTsConfigFeatures } from '../../utils/lightts';
 import { updateConfigFile } from '../../utils/patch/config';
 import { updateEnvFile } from '../../utils/patch/env';
 
@@ -66,7 +66,7 @@ export const addJWTFeature = (project: Project, data: AddCommandProps) => {
 
     spinner.text = 'Update lightts config';
     // add feature to lightts config
-    updateLiteTsConfigFeatures(['jwt']);
+    updateLightTsConfigFeatures(['jwt']);
 
     spinner.succeed('Feature is now onboard');
 };

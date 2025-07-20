@@ -2,7 +2,7 @@ import { ASCII_LOGO } from '../config';
 import { generateESLint } from './generators/eslint';
 import { initGitRepo } from './generators/git';
 import { generateHusky } from './generators/husky';
-import { configureLiteTS } from './generators/lightts';
+import { configureLightTS } from './generators/lightts';
 import { generatePackageJson, installDependencies } from './generators/package-json';
 import { generatePrettier } from './generators/prettier';
 import { generateTSConfig } from './generators/tsconfig';
@@ -14,7 +14,7 @@ export const init = async () => {
 
     generatePackageJson(data);
     installDependencies(data);
-    configureLiteTS(data);
+    configureLightTS(data);
     generateTemplate(data);
     generateTSConfig();
     initGitRepo();

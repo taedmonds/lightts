@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import ora from 'ora';
 import { pkgManagerCommands } from '../../config';
 import { addValidationTemplate } from '../../init/templates/features/validation';
-import { updateLiteTsConfigFeatures } from '../../utils/lightts';
+import { updateLightTsConfigFeatures } from '../../utils/lightts';
 
 export const addValidationFeature = (data: AddCommandProps) => {
     const spinner = ora('Generating files...').start();
@@ -20,7 +20,7 @@ export const addValidationFeature = (data: AddCommandProps) => {
 
     spinner.text = 'Update lightts config';
     // add feature to lightts config
-    updateLiteTsConfigFeatures(['validation']);
+    updateLightTsConfigFeatures(['validation']);
 
     spinner.succeed('Feature is now onboard');
 };
