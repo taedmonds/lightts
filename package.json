@@ -1,6 +1,6 @@
 {
     "name": "lightts",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "description": "A lightweight, native Node.js framework with typescript, designed to keep things simple, transparent, and customizable",
     "keywords": [
         "express",
@@ -19,15 +19,16 @@
         "lts": "dist/index.js"
     },
     "license": "MIT",
-    "author": "terance-edmonds",
+    "author": "taedmonds",
     "repository": {
-        "url": "https://github.com/terance-edmonds/lightts.git"
+        "url": "https://github.com/taedmonds/lightts.git"
     },
     "type": "commonjs",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
     "scripts": {
+        "npm:publish": "pnpm build && npm publish",
         "build": "rimraf dist && tsup --publicDir",
         "link:lts": "pnpm link --global",
         "unlink:lts": "pnpm remove lightts -g",

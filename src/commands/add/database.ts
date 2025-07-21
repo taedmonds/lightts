@@ -13,6 +13,7 @@ import { updateLightTsConfigDatabase, updateLightTsConfigFeatures } from '../../
 import { updateConfigFile } from '../../utils/patch/config';
 import { updateEnvFile } from '../../utils/patch/env';
 import { fileExists } from '../../utils/project';
+import { updatePackageJSONFile } from '../../utils/patch/package-json';
 
 export const addDatabaseFeature = async (project: Project, data: AddCommandProps) => {
     const path = join(DATABASE_DIR);
@@ -22,6 +23,13 @@ export const addDatabaseFeature = async (project: Project, data: AddCommandProps
     if (!existsSync(entitiesPath)) mkdirSync(entitiesPath, { recursive: true });
 
     // prompt for features
+    let packageJsonContent: PackageJSONPatchData = {
+        append: {
+            scripts: {
+                typeorm: 'npx tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js'
+            }
+        }
+    };
     const dbConfigs: DBConfigs = {
         dbType: 'none',
         seeders: false,
@@ -68,12 +76,26 @@ export const addDatabaseFeature = async (project: Project, data: AddCommandProps
 
     // migrations
     if (dbConfigs.migrations) {
+        // add package json scripts
+        packageJsonContent.append.scripts['migrate'] =
+            'npm run typeorm migration:run -- -d ./src/database/index.ts';
+        packageJsonContent.append.scripts['build:migrate'] =
+            'npm run typeorm migration:run -- -d ./dist/src/database/index.js';
+
+        // generate template files
         spinner.text = 'Creating migrations folder';
         mkdirSync(join(path, 'migrations'), { recursive: true });
     }
 
     // seeders
     if (dbConfigs.seeders) {
+        // add package json scripts
+        packageJsonContent.append.scripts['seed'] =
+            'npm run typeorm migration:run -- -d ./src/database/seeders/index.ts';
+        packageJsonContent.append.scripts['build:seed'] =
+            'npm run typeorm migration:run -- -d ./dist/src/database/seeders/index.js';
+
+        // generate template files
         spinner.text = 'Creating seeders folder';
         mkdirSync(join(path, 'seeders/scripts'), { recursive: true });
         addDatabaseSeedersTemplate(project, addConfig);
@@ -81,8 +103,13 @@ export const addDatabaseFeature = async (project: Project, data: AddCommandProps
 
     // dummy
     if (dbConfigs.dummyData) {
-        mkdirSync(join(path, 'dummy/scripts'), { recursive: true });
+        // add package json scripts
+        packageJsonContent.append.scripts['dummy'] =
+            'npm run typeorm migration:run -- -d ./src/database/dummy/index.ts';
+
+        // generate template files
         spinner.text = 'Creating dummy folder';
+        mkdirSync(join(path, 'dummy/scripts'), { recursive: true });
         addDatabaseDummyTemplate(project, addConfig);
     }
 
@@ -136,6 +163,7 @@ export const addDatabaseFeature = async (project: Project, data: AddCommandProps
 
     const connectionStatements = [
         '\n',
+        '# database connection',
         'createConnection()',
         '.then(() => {',
         "log.info('Connected to database');",
@@ -177,6 +205,9 @@ export const addDatabaseFeature = async (project: Project, data: AddCommandProps
     if (dbConfigs.dummyData) {
         devDependencies.push('faker');
     }
+
+    // updata package.json file
+    updatePackageJSONFile(project, packageJsonContent);
 
     // installing dependencies
     execSync(`${pkgCmd.install} ${dependencies.join(' ')}`, { stdio: 'ignore' });
