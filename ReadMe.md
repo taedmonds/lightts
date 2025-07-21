@@ -1,6 +1,5 @@
 # LightTs
 
-<center>
 <pre>
    __   _      __   __ ______  
   / /  (_)__ _/ /  / //_  __/__
@@ -8,7 +7,6 @@
 /____/_/\_, /_//_/\__//_/ /___/
        /___/   
 </pre>
-</center>
 
 A lightweight, native Node.js framework inspired by NestJS, designed to keep things simple, transparent, and customizable. LightTs (also usable via the `lts` command) leverages the power of Node.js and Express while providing a CLI tool to streamline project setup and feature integration, without hiding code behind complex abstractions like decorators. With LightTs, you get clean, editable code that you can tweak to your heart's content.
 

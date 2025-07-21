@@ -163,7 +163,7 @@ export const addDatabaseFeature = async (project: Project, data: AddCommandProps
 
     const connectionStatements = [
         '\n',
-        '# database connection',
+        '// database connection',
         'createConnection()',
         '.then(() => {',
         "log.info('Connected to database');",
