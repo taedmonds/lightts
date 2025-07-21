@@ -67,6 +67,7 @@ export const generateIndexFile = (project: Project, data: PromptConfig) => {
 
     sourceFile.addStatements([
         '\n',
+        '# express configurations',
         'app.use(express.json());',
         'app.use(express.urlencoded({ extended: true }));'
     ]);
@@ -77,6 +78,7 @@ export const generateIndexFile = (project: Project, data: PromptConfig) => {
 
         sourceFile.addStatements((writer) => {
             writer
+                .write('# cors')
                 .write('app.use(')
                 .newLine()
                 .write('cors({')
@@ -96,6 +98,7 @@ export const generateIndexFile = (project: Project, data: PromptConfig) => {
         sourceFile.addStatements((writer) => {
             writer
                 .write('\n')
+                .write('# database connection')
                 .write('createConnection()')
                 .newLine()
                 .write('.then(() => {')
@@ -117,7 +120,10 @@ export const generateIndexFile = (project: Project, data: PromptConfig) => {
     // api routes and error handler
     sourceFile.addStatements([
         '\n',
+        '# http routes',
         'app.use(`/api/${api.version}`, routes);',
+        '\n',
+        '# http error class handler',
         'app.use(HttpError.middleware);'
     ]);
     // express listner

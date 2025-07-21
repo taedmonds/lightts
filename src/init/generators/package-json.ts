@@ -14,17 +14,34 @@ export const generatePackageJson = (data: PromptConfig): string => {
             scripts: {
                 start: 'node dist/index.js',
                 dev: 'nodemon --exec ts-node index.ts',
-                typeorm: 'npx tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js',
-                migrate: 'npm run typeorm migration:run -- -d ./src/database/index.ts',
-                seed: 'npm run typeorm migration:run -- -d ./src/database/seeders/index.ts',
-                dummy: 'npm run typeorm migration:run -- -d ./src/database/dummy/index.ts',
-                build: 'rimraf dist && tsc && tsc-alias',
-                'build:migrate': 'npm run typeorm migration:run -- -d ./dist/src/database/index.js',
-                'build:seed':
-                    'npm run typeorm migration:run -- -d ./dist/src/database/seeders/index.js'
+                build: 'rimraf dist && tsc && tsc-alias'
             },
             license: 'MIT'
         };
+
+        if (data.features.includes('database')) {
+            packageJson.scripts.typeorm =
+                'npx tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js';
+
+            if (data.dbConfigs.migrations) {
+                packageJson.scripts.migrate =
+                    'npm run typeorm migration:run -- -d ./src/database/index.ts';
+                packageJson.scripts['build:migrate'] =
+                    'npm run typeorm migration:run -- -d ./dist/src/database/index.js';
+            }
+
+            if (data.dbConfigs.seeders) {
+                packageJson.scripts.seed =
+                    'npm run typeorm migration:run -- -d ./src/database/seeders/index.ts';
+                packageJson.scripts['build:seed'] =
+                    'npm run typeorm migration:run -- -d ./dist/src/database/seeders/index.js';
+            }
+
+            if (data.dbConfigs.dummyData) {
+                packageJson.scripts.dummy =
+                    'npm run typeorm migration:run -- -d ./src/database/dummy/index.ts';
+            }
+        }
 
         if (data.lintConfigs.includes('eslint')) {
             packageJson.scripts.lint = 'eslint . --ext .ts';

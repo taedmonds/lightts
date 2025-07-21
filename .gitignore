@@ -1,5 +1,63 @@
-node_modules
-dist
-test
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment variables
+.env
+.env.*   # e.g., .env.test, .env.local
+
+# OS-specific files
 .DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor and IDE settings
+.vscode/
+.idea/
+*.sublime*
+
+# Linting and formatting caches
+.eslintcache
+.prettiercache
+
+# Test output and coverage
+coverage/
+test_output/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.bak
+
+# Package manager cache
+.pnpm-store/
+.yarn/
+.cache/
+
+# Miscellaneous
+*.tgz
+*.zip
+*.tar.gz
+
+# Optional personal or non-source files
 notes.md
+
+# Ignore test folder (if tests are not part of the package)
+test/
+
+# Local database or storage files (optional)
+*.sqlite
+*.db
+

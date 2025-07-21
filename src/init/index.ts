@@ -1,4 +1,5 @@
 import { ASCII_LOGO } from '../config';
+import { printLogo } from '../utils/lightts';
 import { generateESLint } from './generators/eslint';
 import { initGitRepo } from './generators/git';
 import { generateHusky } from './generators/husky';
@@ -31,6 +32,6 @@ export const init = async () => {
         generateHusky(data.pkg);
     }
 
-    console.log(ASCII_LOGO);
+    printLogo();
     console.log('{ Happy Coding with LightTs! }');
 };

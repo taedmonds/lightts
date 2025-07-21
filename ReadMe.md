@@ -1,5 +1,15 @@
 # LightTs
 
+<center>
+<pre>
+   __   _      __   __ ______  
+  / /  (_)__ _/ /  / //_  __/__
+ / /__/ / _  / _ \/ __// / (_-<
+/____/_/\_, /_//_/\__//_/ /___/
+       /___/   
+</pre>
+</center>
+
 A lightweight, native Node.js framework inspired by NestJS, designed to keep things simple, transparent, and customizable. LightTs (also usable via the `lts` command) leverages the power of Node.js and Express while providing a CLI tool to streamline project setup and feature integration, without hiding code behind complex abstractions like decorators. With LightTs, you get clean, editable code that you can tweak to your heart's content.
 
 ## Why LightTs?
@@ -208,7 +218,7 @@ epic-api/
 
 ## Extending Features
 
-As LightTs evolves, new features can be added via the `lts add` command. These will generate customizable files using standard Node.js libraries, ensuring you can always modify the generated code to suit your needs. Check the [LightTs documentation](https://github.com/terance-edmonds/lightts) for updates on new features.
+As LightTs evolves, new features can be added via the `lts add` command. These will generate customizable files using standard Node.js libraries, ensuring you can always modify the generated code to suit your needs. Check the [LightTs documentation](https://github.com/taedmonds/lightts) for updates on new features.
 
 ## Contributing
 

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import ora from 'ora';
 import path from 'path';
-import { DEFAULT_LIGHTTS_CONFIG, LIGHTTS_DIR } from '../config';
+import { ASCII_LOGO, DEFAULT_LIGHTTS_CONFIG, LIGHTTS_DIR } from '../config';
 
 export const getLightTsConfig = (): LightTsConfig => {
     const configPath = path.resolve(process.cwd(), LIGHTTS_DIR, 'config.json');
@@ -68,4 +68,8 @@ export const updateLightTsConfigDatabase = (dbConfigs: DBConfigs) => {
         2
     );
     fs.writeFileSync(configPath, config);
+};
+
+export const printLogo = () => {
+    console.log(`%c ${ASCII_LOGO}`, 'font-family:courier');
 };

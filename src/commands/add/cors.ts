@@ -62,6 +62,7 @@ export const addCorsFeature = (project: Project, data: AddCommandProps) => {
     // add cors origin checkCorsOrigin
     const corsStatements = [
         '\n',
+        '# cors',
         'app.use(cors());',
         'app.use(',
         'cors({',

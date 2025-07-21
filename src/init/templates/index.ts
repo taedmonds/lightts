@@ -11,6 +11,7 @@ import { generateModuleFiles } from './modules';
 import { generateIndexFile } from './root';
 import { generateRoutesFile } from './routes';
 import { generateTypeFiles } from './types';
+import { generateReadMe } from './readme';
 
 export const generateTemplate = (data: PromptConfig) => {
     const project = createProject();
@@ -53,6 +54,9 @@ export const generateTemplate = (data: PromptConfig) => {
             spinner.text = 'Generating database setup...';
             generateDatabaseFiles(project, data);
         }
+
+        spinner.text = 'Generating readme file...';
+        generateReadMe(project, data);
 
         spinner.text = 'Formatting and saving files...';
         formatAndSaveProject(project);
