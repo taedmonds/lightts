@@ -1,0 +1,26 @@
+name: ✨ Feature Request
+description: Suggest a feature request
+title: "feat:"
+labels: ["⭐ goal: addition", "🚦status: awaiting triage"]
+body:
+  - type: textarea
+    id: what-feature
+    attributes:
+      label: What feature?
+      placeholder: Add descriptions
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Add screenshots
+      placeholder: Add screenshots
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: "Record"
+      options:
+        - label: I have checked the existing [issues](https://github.com/taedmonds/lightts/issues)
+          required: true
