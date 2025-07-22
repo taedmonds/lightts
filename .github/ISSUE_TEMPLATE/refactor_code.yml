@@ -1,0 +1,27 @@
+name: Refactor Code 🔧
+description: Use this label for code refactoring tasks.
+title: "[Refactor] <write what you want to add>"
+labels: ["🛠 goal: refactor", "🚦status: awaiting triage"]
+body:
+  - type: input
+    id: refactor_input
+    attributes:
+      label: File Name
+      description: "Enter the file that you want to refactor in the codebase."
+      placeholder: "For example - src/init/index.ts"
+    validations:
+      required: true
+  - type: textarea
+    id: refactor_description
+    attributes:
+      label: "Reason for Refactoring the Code"
+      description: "Describe what improvements can be made in the codebase without introducing breaking changes."
+    validations:
+      required: true
+  - type: checkboxes
+    id: refactor_terms
+    attributes:
+      label: "Record"
+      options:
+        - label: I have checked the existing [issues](https://github.com/taedmonds/lightts/issues)
+          required: true
