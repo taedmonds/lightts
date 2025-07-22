@@ -8,7 +8,7 @@ import { ensureDirectory, fileExists, promptOverwrite } from '../../utils/projec
 
 const updateRouter = (project: Project, fileStyle: FileStyle, moduleName: string) => {
     const spinner = ora(`Updating router for ${moduleName}`).start();
-    const routerPath = path.join(ROOT_DIR, 'router.ts');
+    const routerPath = path.join(ROOT_DIR, 'routes.ts');
     let routerFile: SourceFile;
 
     try {
@@ -124,13 +124,10 @@ export const generateController = async (
             moduleSpecifier: 'express'
         });
 
-        const serviceImportPath = getImportPath(
-            kebabCase(props.name),
-            './',
-            'service',
-            props.lightts.fileStyle,
-            true
-        );
+        const serviceImportPath =
+            './' +
+            getImportPath(kebabCase(props.name), '', 'service', props.lightts.fileStyle, true);
+
         if (hasService) {
             sourceFile.addImportDeclaration({
                 defaultImport: 'services',
@@ -160,6 +157,8 @@ export const generateController = async (
             expression: 'router',
             isExportEquals: false
         });
+
+        sourceFile.saveSync();
 
         // update router file with new module
         updateRouter(project, props.lightts.fileStyle, moduleName);

@@ -21,8 +21,8 @@ export const generateResource = async (project: Project, props: GenerateCommandP
         ensureDirectory(moduleDir);
 
         let resourceGenerated = false;
-        resourceGenerated = await generateController(project, props);
         resourceGenerated = await generateService(project, props);
+        resourceGenerated = await generateController(project, props);
         if (props.lightts.features.includes('validation'))
             resourceGenerated = await generateSchema(project, props);
 

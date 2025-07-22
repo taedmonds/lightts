@@ -54,6 +54,8 @@ export const generateSchema = async (
             isExportEquals: false
         });
 
+        sourceFile.saveSync();
+
         spinner.succeed(`Schema created for ${moduleName} at ${schemaPath}`);
         return true;
     } catch (error) {

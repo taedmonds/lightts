@@ -69,6 +69,8 @@ export const generateService = async (
             isExportEquals: false
         });
 
+        sourceFile.saveSync();
+
         spinner.succeed(`Service created for ${moduleName} at ${servicePath}`);
         return true;
     } catch (error) {
