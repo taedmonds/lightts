@@ -74,8 +74,6 @@ export const generateIndexFile = (project: Project, data: PromptConfig) => {
 
     // add cors & configs
     if (data.features.includes('cors')) {
-        sourceFile.addStatements(['\n', 'app.use(cors());']);
-
         sourceFile.addStatements((writer) => {
             writer
                 .write('// cors')
