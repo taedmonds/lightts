@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 export class HttpError extends Error {
     public readonly statusCode: number;
@@ -14,12 +14,12 @@ export class HttpError extends Error {
         Error.captureStackTrace(this, this.constructor);
     }
 
-    static middleware(err: Request, req: Request, res: Response) {
+    static middleware(err: HttpError, req: Request, res: Response, next: NextFunction) {
         const statusCode = err.statusCode || 500;
 
         res.status(statusCode).json({
             success: false,
-            message: err.statusMessage || 'internal server error'
+            message: err.message || 'internal server error'
         });
     }
 }
