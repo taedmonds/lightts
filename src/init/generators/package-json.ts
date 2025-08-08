@@ -89,7 +89,8 @@ export const installDependencies = (data: PromptConfig) => {
             'nodemon',
             '@types/express',
             '@types/node',
-            'rimraf'
+            'rimraf',
+            'dotenv'
         ];
 
         if (data.features.includes('jwt')) {

@@ -1,4 +1,4 @@
-import { BadRequestError } from '@/core/error/bad-request';
+import { BadRequestError } from '@/core/errors/bad-request';
 import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 
